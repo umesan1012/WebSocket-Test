@@ -26,6 +26,7 @@ public class MessageHandler extends TextWebSocketHandler{
 	
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message) {
+		System.out.println("send Message user session:" + session.getId());
 		users.stream().filter(user -> !user.getId().equals(session.getId()))
 		.forEach(user -> {
 			try {
