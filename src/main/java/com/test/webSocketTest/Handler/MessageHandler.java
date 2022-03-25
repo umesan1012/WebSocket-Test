@@ -19,6 +19,7 @@ public class MessageHandler extends TextWebSocketHandler{
 		// 接続が確立されたら呼ばれる
 		if (users.stream().noneMatch(user -> user.getId().equals(session.getId()))) {
 			// ユーザーを追加
+			System.out.println(session.getId());
 			users.add(session);
 		}
 	}
