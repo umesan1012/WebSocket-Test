@@ -29,6 +29,7 @@ public class MessageHandler extends TextWebSocketHandler{
 		users.stream().filter(user -> !user.getId().equals(session.getId()))
 		.forEach(user -> {
 			try {
+				System.out.println("send Message:" + message);
 				user.sendMessage(message);
 			}catch(IOException ex) {
 			}
@@ -38,6 +39,7 @@ public class MessageHandler extends TextWebSocketHandler{
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception{
 		// 接続が閉じられたらリストから外す
+		System.out.println("close session:" + session.getId());
 		users.stream()
 			.filter(user -> user.getId().equals(session.getId()))
 			.findFirst()
